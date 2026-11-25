@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="45%" r="70%">
+      <stop offset="0%" stop-color="#fffdf8" />
+      <stop offset="65%" stop-color="#faf6ef" />
+      <stop offset="100%" stop-color="#f3eadc" />
+    </radialGradient>
+    <radialGradient id="seal" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#ca5a71" />
+      <stop offset="65%" stop-color="#b5485f" />
+      <stop offset="100%" stop-color="#8e3246" />
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <rect x="36" y="36" width="1128" height="558" fill="none" stroke="#c9a96e" stroke-opacity="0.35" stroke-width="1.5" />
+  <circle cx="600" cy="255" r="56" fill="url(#seal)" stroke="#c9a96e" stroke-opacity="0.45" stroke-width="2" />
+  <g transform="translate(600 255)">
+    <path d="M0 -6 C6 -16, 12 -24, 4 -30 L0 -26 L-4 -30 C-12 -24, -6 -16, 0 -6 Z" fill="#faf6ef" opacity="0.92" />
+    <path d="M0 -6 C6 -16, 12 -24, 4 -30 L0 -26 L-4 -30 C-12 -24, -6 -16, 0 -6 Z" fill="#faf6ef" opacity="0.92" transform="rotate(72)" />
+    <path d="M0 -6 C6 -16, 12 -24, 4 -30 L0 -26 L-4 -30 C-12 -24, -6 -16, 0 -6 Z" fill="#faf6ef" opacity="0.92" transform="rotate(144)" />
+    <path d="M0 -6 C6 -16, 12 -24, 4 -30 L0 -26 L-4 -30 C-12 -24, -6 -16, 0 -6 Z" fill="#faf6ef" opacity="0.92" transform="rotate(216)" />
+    <path d="M0 -6 C6 -16, 12 -24, 4 -30 L0 -26 L-4 -30 C-12 -24, -6 -16, 0 -6 Z" fill="#faf6ef" opacity="0.92" transform="rotate(288)" />
+    <circle cx="0" cy="0" r="4" fill="#c9a96e" />
+  </g>
+  <text x="600" y="375" text-anchor="middle" font-family="Georgia, serif" font-size="34" fill="#2e3a59" letter-spacing="2">
+    Someone has written something for you
+  </text>
+  <text x="600" y="425" text-anchor="middle" font-family="serif" font-size="24" fill="#4a536b" letter-spacing="8">
+    あなたへの手紙
+  </text>
+</svg>

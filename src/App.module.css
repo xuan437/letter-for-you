@@ -1,0 +1,72 @@
+.app {
+  position: relative;
+  min-height: 100dvh;
+  background-color: var(--color-bg);
+  transition: background-color 0.4s ease;
+}
+
+.ambientLight {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(
+    circle 520px at var(--light-x, 50%) var(--light-y, 35%),
+    rgba(255, 250, 240, 0.65) 0%,
+    rgba(248, 215, 224, 0.16) 42%,
+    transparent 75%
+  );
+}
+
+.controls {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.controlButton {
+  padding: 0.4rem 0.85rem;
+  border: 1px solid rgba(46, 58, 89, 0.24);
+  border-radius: 999px;
+  background: rgba(253, 250, 244, 0.86);
+  color: var(--color-accent);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  backdrop-filter: blur(4px);
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.controlButton:hover {
+  background: rgba(248, 215, 224, 0.32);
+  border-color: var(--color-primary);
+  transform: translateY(-1px);
+}
+
+.bgBranch {
+  position: fixed;
+  top: 0;
+  right: 0;
+  pointer-events: none;
+  z-index: 1;
+  max-width: 52vw;
+  height: auto;
+  will-change: transform;
+  transform-origin: 100% 10%;
+  animation: bgBranchSway 11s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
+}
+
+@keyframes bgBranchSway {
+  from {
+    transform: rotate(-1.2deg);
+  }
+  to {
+    transform: rotate(1.4deg);
+  }
+}

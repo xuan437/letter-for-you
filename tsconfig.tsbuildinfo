@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/components/fadeintext.tsx","./src/components/letter.tsx","./src/components/petalfield.tsx","./src/components/sealedletter.tsx","./src/config/letter.ts","./src/utils/exportletterimage.ts"],"version":"5.9.3"}

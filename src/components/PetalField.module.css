@@ -1,0 +1,185 @@
+.field {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  perspective: 900px;
+}
+
+.backField {
+  z-index: 2;
+}
+
+.frontField {
+  z-index: 4;
+}
+
+.petalSlot {
+  position: absolute;
+  top: -8vh;
+  will-change: transform, opacity;
+  animation-name: driftDown;
+  animation-iteration-count: infinite;
+}
+
+.swirlLayer {
+  will-change: transform;
+}
+
+.swirling .swirlLayer {
+  animation: breezeSwirl 2.3s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+
+.petalSvg {
+  display: block;
+  will-change: transform;
+  transform-style: preserve-3d;
+  animation: gentleFlutter 4.6s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
+}
+
+.finalBlossom {
+  position: absolute;
+  top: -10vh;
+  left: 18%;
+  will-change: transform, opacity;
+  animation: singleBlossomFall 8.5s cubic-bezier(0.32, 0.08, 0.24, 1) forwards;
+}
+
+.finalBlossomSvg {
+  display: block;
+  will-change: transform;
+  animation: blossomSway 3.4s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
+}
+
+@keyframes driftDown {
+  0% {
+    transform: translate3d(0, -8vh, 0) rotate(var(--rot-start, 0deg));
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  33% {
+    transform: translate3d(calc(var(--sway-x, 36px) * 0.7), 32vh, 0)
+      rotate(calc(var(--rot-start, 0deg) + 85deg));
+  }
+  66% {
+    transform: translate3d(calc(var(--sway-x, 36px) * -0.35), 68vh, 0)
+      rotate(calc(var(--rot-start, 0deg) + 185deg));
+  }
+  88% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(calc(var(--sway-x, 36px) * 0.45), 110vh, 0)
+      rotate(var(--rot-end, 280deg));
+    opacity: 0;
+  }
+}
+
+@keyframes gentleFlutter {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(-8deg) scale(1);
+  }
+  50% {
+    transform: rotateX(42deg) rotateY(28deg) rotateZ(10deg) scale(0.92);
+  }
+  100% {
+    transform: rotateX(-24deg) rotateY(-34deg) rotateZ(-4deg) scale(1.02);
+  }
+}
+
+@keyframes breezeSwirl {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+  }
+  28% {
+    transform: translate3d(72px, -36px, 0) rotate(88deg) scale(1.1);
+  }
+  65% {
+    transform: translate3d(-44px, 14px, 0) rotate(-38deg) scale(0.96);
+  }
+  100% {
+    transform: translate3d(12px, 0, 0) rotate(12deg) scale(1);
+  }
+}
+
+@keyframes singleBlossomFall {
+  0% {
+    transform: translate3d(0, -8vh, 0) rotate(0deg);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.95;
+  }
+  40% {
+    transform: translate3d(24vw, 38vh, 0) rotate(105deg);
+    opacity: 0.92;
+  }
+  72% {
+    transform: translate3d(44vw, 72vh, 0) rotate(185deg);
+    opacity: 0.85;
+  }
+  100% {
+    transform: translate3d(58vw, 108vh, 0) rotate(255deg);
+    opacity: 0;
+  }
+}
+
+@keyframes blossomSway {
+  from {
+    transform: rotateX(0deg) rotateY(-14deg);
+  }
+  to {
+    transform: rotateX(22deg) rotateY(16deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .petalSlot {
+    animation: none !important;
+    top: auto;
+    opacity: 0.45;
+  }
+
+  .petalSlot:nth-child(odd) {
+    display: none;
+  }
+
+  .petalSlot:nth-child(2) {
+    top: 14vh;
+    left: 12% !important;
+  }
+
+  .petalSlot:nth-child(4) {
+    top: 28vh;
+    left: 84% !important;
+  }
+
+  .petalSlot:nth-child(6) {
+    top: 72vh;
+    left: 16% !important;
+  }
+
+  .petalSlot:nth-child(8) {
+    top: 80vh;
+    left: 78% !important;
+  }
+
+  .petalSlot:nth-child(n + 10) {
+    display: none;
+  }
+
+  .swirlLayer,
+  .petalSvg,
+  .finalBlossom,
+  .finalBlossomSvg {
+    animation: none !important;
+  }
+
+  .finalBlossom {
+    top: 76vh;
+    left: 72%;
+    opacity: 0.85;
+  }
+}

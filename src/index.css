@@ -1,0 +1,103 @@
+/* ==========================================================================
+   Global Design Tokens & Base Styles
+   Wabi-sabi sakura letter aesthetic: WCAG AA contrast, tactile washi paper.
+   ========================================================================== */
+
+:root {
+  /* Core Palette (can be overridden by letterConfig.theme) */
+  --color-bg: #faf6ef;
+  --color-paper: #fdfaf4;
+  --color-paper-fold: rgba(181, 158, 126, 0.14);
+  --color-primary: #b5485f;
+  --color-primary-soft: #f8d7e0;
+  --color-accent: #2e3a59;
+  --color-gold: #c9a96e;
+  --color-gold-muted: rgba(201, 169, 110, 0.42);
+
+  /* WCAG AA compliant ink tones over #faf6ef / #fdfaf4 */
+  --color-ink: #252b3b;
+  --color-ink-muted: #4a536b;
+  --color-ink-faint: #5c6478;
+
+  /* Typography */
+  --font-body: 'Lora', 'Shippori Mincho', Georgia, serif;
+  --font-jp: 'Shippori Mincho', 'Lora', serif;
+  --font-brush: 'Yuji Syuku', 'Shippori Mincho', serif;
+
+  /* Elevation */
+  --shadow-paper:
+    0 2px 6px rgba(46, 58, 89, 0.04),
+    0 14px 36px rgba(46, 58, 89, 0.08),
+    0 1px 0 rgba(255, 255, 255, 0.7) inset;
+  --shadow-envelope:
+    0 8px 24px rgba(46, 58, 89, 0.09),
+    0 24px 48px rgba(46, 58, 89, 0.06);
+
+  /* Pointer / device orientation light coordinates */
+  --light-x: 50%;
+  --light-y: 35%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-feature-settings: 'kern' 1, 'liga' 1, 'palt' 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Subtle washi paper fiber texture across the viewport */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.38;
+  background-image:
+    radial-gradient(circle at 18% 22%, rgba(248, 215, 224, 0.28) 0%, transparent 48%),
+    radial-gradient(circle at 82% 76%, rgba(201, 169, 110, 0.12) 0%, transparent 45%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'%3E%3Cfilter id='washi'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.55  0 0 0 0 0.48  0 0 0 0 0.38  0 0 0 0.055 0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23washi)'/%3E%3C/svg%3E");
+}
+
+#root {
+  position: relative;
+  min-height: 100dvh;
+  z-index: 1;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+  box-shadow: 0 0 0 5px rgba(248, 215, 224, 0.55);
+}
+
+/* Respect user motion preferences globally */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
