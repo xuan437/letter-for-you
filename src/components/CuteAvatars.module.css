@@ -1,0 +1,95 @@
+.layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+  overflow: hidden;
+}
+
+.avatarWrap {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  will-change: transform, opacity;
+  animation: avatarPopLifecycle 4.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.bubbleLeft {
+  flex-direction: row-reverse;
+}
+
+.bubbleRight {
+  flex-direction: row;
+}
+
+.character {
+  flex-shrink: 0;
+  filter: drop-shadow(0 3px 8px rgba(46, 58, 89, 0.12));
+  will-change: transform;
+  animation: gentleBob 2.2s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
+}
+
+.bubble {
+  position: relative;
+  padding: 0.36rem 0.72rem;
+  border-radius: 999px;
+  background: rgba(253, 250, 244, 0.94);
+  border: 1px solid rgba(181, 72, 95, 0.28);
+  box-shadow: 0 4px 14px rgba(46, 58, 89, 0.09);
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-style: italic;
+  color: var(--color-primary);
+  white-space: nowrap;
+}
+
+@keyframes avatarPopLifecycle {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.82);
+  }
+  14% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  82% {
+    opacity: 1;
+    transform: translateY(-2px) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.92);
+  }
+}
+
+@keyframes gentleBob {
+  from {
+    transform: translateY(0) rotate(-3deg);
+  }
+  to {
+    transform: translateY(-4px) rotate(3deg);
+  }
+}
+
+@media (max-width: 720px) {
+  .avatarWrap {
+    transform: scale(0.88);
+  }
+
+  .bubble {
+    font-size: 0.72rem;
+    padding: 0.3rem 0.6rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .avatarWrap {
+    animation: none !important;
+    opacity: 0.95;
+  }
+
+  .character {
+    animation: none !important;
+  }
+}

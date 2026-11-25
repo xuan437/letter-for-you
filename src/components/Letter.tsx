@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { LetterConfig } from '../config/letter';
 import { downloadLetterAsImage } from '../utils/exportLetterImage';
+import { CuteAvatars } from './CuteAvatars';
 import { FadeInText } from './FadeInText';
 import styles from './Letter.module.css';
 
@@ -51,6 +52,7 @@ export const Letter: React.FC<LetterProps> = ({
 
   return (
     <main className={styles.stage}>
+      {!isClosing && <CuteAvatars />}
       <article
         className={`${styles.paper} ${isClosing ? styles.paperClosing : ''}`}
         aria-label={`Letter for ${config.recipientName}`}
